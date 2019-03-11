@@ -6,18 +6,17 @@ import (
 	"net/http"
 )
 
-func Bootstrap() error {
+func Bootstrap(port string) error {
 	e := echo.New()
 	e.GET("/validate/:iban", func(c echo.Context) error {
 		valid := domain.Validate(c.Param("iban"))
-		return c.JSON(http.StatusOK, &Valid{IsValid:valid})
+		return c.JSON(http.StatusOK, &Valid{IsValid: valid})
 	})
 
-	err := e.Start(":8080")
+	err := e.Start(":" + port)
 	return err
 }
 
-
 type Valid struct {
-	IsValid	bool
+	IsValid bool
 }
