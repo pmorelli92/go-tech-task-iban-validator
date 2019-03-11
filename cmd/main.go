@@ -7,9 +7,9 @@ import (
 
 func main() {
 	iban := "CV05766894889188535145823"
-	if err := domain.Validate(iban); err != nil {
-		fmt.Println(err)
-	} else {
+	if valid := domain.Validate(iban); valid {
 		fmt.Println("OK")
+	} else {
+		fmt.Println("NOT OK")
 	}
 }

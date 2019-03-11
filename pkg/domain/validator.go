@@ -1,13 +1,12 @@
 package domain
 
 import (
-	"errors"
-	"fmt"
 	"math/big"
 	"strconv"
 )
 
-func Validate(iban string) error {
+// Validate takes an IBAN and returns nil if it is valid or err if it is not
+func Validate(iban string) bool {
 	charValues := *getCharValues()
 	countries := *getCountries()
 
@@ -38,12 +37,9 @@ func Validate(iban string) error {
 			res := n.Mod(n, big.NewInt(97))
 
 			// concat % 97 == 1
-			if res.String() == "1" {
-				return nil
-			}
+			return res.String() == "1"
 		}
 	}
 
-	errMsg := fmt.Sprintf("The IBAN %s is not valid", iban)
-	return errors.New(errMsg)
+	return false
 }
