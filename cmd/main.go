@@ -1,15 +1,9 @@
 package main
 
-import (
-	"fmt"
-	"iban-validator/pkg/domain"
-)
+import "iban-validator/pkg/http"
 
 func main() {
-	iban := "CV05766894889188535145823"
-	if valid := domain.Validate(iban); valid {
-		fmt.Println("OK")
-	} else {
-		fmt.Println("NOT OK")
+	if err := http.Bootstrap(); err != nil {
+		panic(err)
 	}
 }
