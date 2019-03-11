@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/pmorelli92/iban-validator](https://goreportcard.com/report/pmorelli92/iban-validator)
+[![Go Report Card](https://goreportcard.com/badge/pmorelli92/iban-validator)](https://goreportcard.com/report/pmorelli92/iban-validator)
 
 # IBAN Validator
 
